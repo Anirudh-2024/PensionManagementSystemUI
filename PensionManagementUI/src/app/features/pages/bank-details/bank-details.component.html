@@ -1,0 +1,53 @@
+<section class="bankDetailsSection">
+    <div class="d-flex flex-row justify-content-center">
+        <p class="text-primary h3 mb-4 mt-4">Bank Details</p>
+    </div>
+        <div class="form-div">
+        <form  #bankDetailsForm="ngForm" >
+            <div class="form-group row ">
+              <label  class="col-sm-3 col-form-label">Bank Name <span>*</span></label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control"  placeholder="SBI" name="bankName" ngModel required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label" for="account">Account Number <span>*</span></label>
+              <div class="col-sm-5">
+                <input type="password" id="account" name="account" class="form-control" placeholder="3245XXXX2345" ngModel required>
+              </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label" for="confirmAccount">Confirm Account Number <span>*</span></label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" placeholder="3245XXXX2345" id="confirmAccount" name="confirmAccount" ngModel required>
+                  <div *ngIf="bankDetailsForm.controls['confirmAccount']?.['touched']&& bankDetailsForm.controls['account']?.['value'] != bankDetailsForm.controls['confirmAccount']?.['value']">
+                    <small>Account numbers must mach.</small>
+                </div>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">IFSC Code <span>*</span></label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" placeholder="SBIN3456777" name="ifscCode" ngModel required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Branch Name <span>*</span> </label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" placeholder="Alcot Graden" name="branchName" ngModel required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Pan Number <span>*</span></label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control"  placeholder="BPAJ3456RE" name="panNumber" ngModel required>
+                </div>
+              </div>
+            <div class="form-group mt-5 button-group">
+                <button type="button" class="btn btn-warning px-4">Edit</button>
+                <button type="submit" class="btn btn-primary px-3">Submit</button>
+            </div>
+            </form>
+        </div>
+</section>
