@@ -1,0 +1,70 @@
+<section class="pensionerDetailsSection">
+    <div class="d-flex flex-row justify-content-center">
+    <p class="text-primary h3 mb-4 mt-4">Pensioner Details</p>
+    </div>
+    <div class="form-div">
+    <form #personalDetailsForm="ngForm">
+    <div class="form-group row">
+    <label class="col-sm-3 col-form-label">Full Name <span>*</span></label>
+    <div class="col-sm-5">
+    <input type="text" class="form-control" placeholder="Mood Divya"  name="fullName" ngModel required>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="col-sm-3 col-form-label">Date of Birth <span>*</span></label>
+    <div class="col-sm-5">
+    <input type="date" class="form-control" name="dob" ngModel required>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="col-sm-3 col-form-label">Gender <span>*</span></label>
+    <div class="col-sm-5">
+    <select class="form-control" name="gender" ngModel required>
+    <option value="" disabled selected>Select Gender</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="other">Other</option>
+    </select>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="col-sm-3 col-form-label">Aadhar Number <span>*</span></label>
+    <div class="col-sm-5">
+    <input type="text" class="form-control" placeholder="1234 5678 9012" name="aadharNumber" ngModel required>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="col-sm-3 col-form-label">Phone Number <span>*</span></label>
+    <div class="col-sm-5">
+    <input type="tel" class="form-control" placeholder="123-456-7890" name="phoneNumber" ngModel required>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="col-sm-3 col-form-label">Address <span>*</span></label>
+    <div class="col-sm-5">
+    <textarea class="form-control" placeholder="123 Main St, City, Country" name="address" ngModel required></textarea>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="col-sm-3 col-form-label">Age <span>*</span></label>
+    <div class="col-sm-5">
+    <input type="number" class="form-control" placeholder="60" name="age" ngModel required>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="col-sm-3 col-form-label">Pension Plan</label>
+    <div class="col-sm-5">
+    <select class="form-control" name="pensionPlan">
+    <option value="plan1">Plan 1</option>
+    <option value="plan2">Plan 2</option>
+    <option value="plan3">Plan 3</option>
+    </select>
+    </div>
+    </div>
+    <div class="form-group mt-5 button-group">
+    <button type="reset" class="btn btn-warning px-4">Edit</button>
+    <button type="submit" class="btn btn-primary px-3">Submit</button>
+    </div>
+    </form>
+    </div>
+    </section>
