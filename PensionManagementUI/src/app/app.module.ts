@@ -7,6 +7,9 @@ import { SignUpComponent } from './features/auth/sign-up/sign-up.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { BankDetailsComponent } from './features/pages/bank-details/bank-details.component';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './features/pages/home/home.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
+
 import { PensionerComponent } from './features/pages/pensioner/pensioner.component';
 import { GuardianComponent } from './features/pages/guardian/guardian.component';
 
@@ -16,7 +19,12 @@ import { GuardianComponent } from './features/pages/guardian/guardian.component'
     AppComponent,
     SignUpComponent,
     LoginComponent,  
-    BankDetailsComponent, PensionerComponent, GuardianComponent
+    BankDetailsComponent,
+    HomeComponent,
+    NavbarComponent,  
+    BankDetailsComponent,
+    PensionerComponent,
+    GuardianComponent
    
   ],
   imports: [
