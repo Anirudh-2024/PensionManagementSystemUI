@@ -11,6 +11,7 @@ import { HomeComponent } from './features/pages/home/home.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,6 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
     LoginComponent,  
     BankDetailsComponent,
     HomeComponent,
-
     NavbarComponent,  
   ],
   imports: [
