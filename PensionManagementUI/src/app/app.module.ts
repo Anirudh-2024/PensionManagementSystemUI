@@ -8,6 +8,8 @@ import { LoginComponent } from './features/auth/login/login.component';
 import { BankDetailsComponent } from './features/pages/bank-details/bank-details.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './features/pages/home/home.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
+
 
 
 @NgModule({
@@ -16,8 +18,8 @@ import { HomeComponent } from './features/pages/home/home.component';
     SignUpComponent,
     LoginComponent,  
     BankDetailsComponent,
-    HomeComponent
-   
+    HomeComponent,
+    NavbarComponent,  
   ],
   imports: [
     BrowserModule,
