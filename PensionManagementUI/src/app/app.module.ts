@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './features/pages/home/home.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 
+import { PensionerComponent } from './features/pages/pensioner/pensioner.component';
+import { GuardianComponent } from './features/pages/guardian/guardian.component';
 
 
 @NgModule({
@@ -20,6 +22,10 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
     BankDetailsComponent,
     HomeComponent,
     NavbarComponent,  
+    BankDetailsComponent,
+    PensionerComponent,
+    GuardianComponent
+   
   ],
   imports: [
     BrowserModule,
