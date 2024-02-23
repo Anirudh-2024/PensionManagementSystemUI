@@ -12,6 +12,7 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 
 import { PensionerComponent } from './features/pages/pensioner/pensioner.component';
 import { GuardianComponent } from './features/pages/guardian/guardian.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { GuardianComponent } from './features/pages/guardian/guardian.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
