@@ -11,7 +11,7 @@ import { FormBuilder, Validators} from '@angular/forms';
 export class SignUpComponent {
   model:registeruser;
 
-  constructor(private signUpService:SignupService, private fb:FormBuilder){
+  constructor(private signUpService:SignupService){
     this.model = {
       userName: '',
       email: '',
