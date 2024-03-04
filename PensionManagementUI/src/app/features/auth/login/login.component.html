@@ -7,17 +7,27 @@
               <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                  <p class="text-center h2 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
-                 <form class="mx-1 mx-md-4">
+                 <form class="mx-1 mx-md-4" #loginForm ="ngForm" (ngSubmit)="onLoginFormSubmit()">
                     <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
-                          <label class="form-label">Email Address</label>
-                          <input type="email" name="emailAddress" class="form-control" />
+                          <label class="form-label">Email Address <span>*</span></label>
+                          <input type="email" name="email" class="form-control" [(ngModel)]="model.email" required  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"/>
+                          <div *ngIf="loginForm.controls['email']?.['touched'] && loginForm.controls['email'].invalid " >
+                            <div *ngIf="loginForm.controls['email'].errors?.required" class="errorMessage">Email Address is required.</div>
+                            <div *ngIf="loginForm.controls['email'].errors?.pattern" class="errorMessage">Please enter a valid email address.</div>
+                          </div>
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
-                          <label class="form-label">Password</label>
-                          <input type="password" name="password" class="form-control" />
+                          <label class="form-label">Password <span>*</span></label>
+                          <input type="password" name="password" class="form-control" [(ngModel)]="model.password" required
+                          minlength="8"
+                          maxlength="8"/>
+                          <div *ngIf="loginForm.controls['password']?.['touched'] && loginForm.controls['password'].invalid" >
+                            <div *ngIf="loginForm.controls['password'].errors?.required" class="errorMessage">Password is required</div>
+                            <div *ngIf="loginForm.controls['password'].errors?.minlength || loginForm.controls['password'].errors?.maxlength" class="errorMessage">Password must be at 8 characters long</div>
+                          </div>
                         </div>
                     </div>
                     <div class="d-flex flex-row mb-4">
@@ -26,7 +36,7 @@
                      
                     </div>
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button type="button" class="btn">Login</button>
+                        <button type="submit" class="btn">Login</button>
                     </div>
                  </form>
                 </div>

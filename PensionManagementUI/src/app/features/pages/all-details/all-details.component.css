@@ -1,0 +1,31 @@
+.form-div{
+    margin-left: 340px;
+}
+ .form-control{
+     background-color: #D9D9D9;
+ }
+ .table-active{
+    border: 1px solid #D9D9D9;
+
+ }
+.table{
+  margin-top: 20px;
+  width: 75%;
+}
+ .btn-primary{
+     background-color: rgba(0, 76, 255, 0.551);
+     border:  rgba(0, 76, 255, 0.551);
+     color: black;
+ }
+ .btn-primary:hover{
+     background-color:#3B71CA;
+     color: white;
+ }
+ .btn{
+     border-radius: 20px;  
+ }
+ 
+ small, span{
+     color: red;
+ }
+ 

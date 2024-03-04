@@ -8,17 +8,9 @@ input{
     background-color: #D9D9D9;
 }
 .button-group{
-    margin-left: 340px; 
+    margin-left: 360px; 
 }
-.btn-warning{
-    margin-right: 40px;
-    background-color: rgba(255, 255, 0, 0.551); 
-    border: rgba(255, 255, 0, 0.551);
-}
-.btn-warning:hover{
-    background-color:#E4A11B;
-    color: white; 
-}
+
 .btn-primary{
     background-color: rgba(0, 76, 255, 0.551);
     border:  rgba(0, 76, 255, 0.551);
@@ -36,6 +28,10 @@ input.ng-invalid.ng-touched{
     border: 1px solid red;
 }
 
-small, span{
+span{
     color: red;
+}
+.errorMessage{
+    color: red;
+    font-size: 14px;
 }
