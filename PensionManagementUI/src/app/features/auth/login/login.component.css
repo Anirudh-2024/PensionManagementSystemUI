@@ -16,5 +16,16 @@
     margin-top: 56px;
     margin-bottom: 56px;
 }
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+span{
+    color: red;
+}
+.errorMessage{
+    color: red;
+    font-size: 14px;
+}
 
 
