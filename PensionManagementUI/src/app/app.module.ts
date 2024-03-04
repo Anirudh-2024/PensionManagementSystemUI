@@ -12,6 +12,8 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 
 import { PensionerComponent } from './features/pages/pensioner/pensioner.component';
 import { GuardianComponent } from './features/pages/guardian/guardian.component';
+import { FooterComponent } from './core/footer/footer.component';
+import { AllDetailsComponent } from './features/pages/all-details/all-details.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { GuardianComponent } from './features/pages/guardian/guardian.component'
     NavbarComponent,  
     BankDetailsComponent,
     PensionerComponent,
-    GuardianComponent
+    GuardianComponent,
+    FooterComponent,
+    AllDetailsComponent
    
   ],
   imports: [
