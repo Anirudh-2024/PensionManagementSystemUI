@@ -3,25 +3,28 @@
         <p class="text-primary h3 mb-4 mt-4">Bank Details</p>
     </div>
         <div class="form-div">
-        <form  #bankDetailsForm="ngForm" >
+        <form  #bankDetailsForm="ngForm"  (ngSubmit) = "onBankFormSubmit()">
             <div class="form-group row ">
               <label  class="col-sm-3 col-form-label">Bank Name <span>*</span></label>
               <div class="col-sm-5">
-                <input type="text" class="form-control"  placeholder="SBI" name="bankName" ngModel required>
+                <input type="text" class="form-control"  placeholder="SBI" name="bankName" [(ngModel)]="model.bankName" required>
+                <div *ngIf = "bankDetailsForm.controls['bankName']?.['touched'] && bankDetailsForm.controls['bankName'].invalid" class="errorMessage">Bank Name is required</div>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label" for="account">Account Number <span>*</span></label>
               <div class="col-sm-5">
-                <input type="password" id="account" name="account" class="form-control" placeholder="3245XXXX2345" ngModel required>
+                <input type="password" id="account" name="account" class="form-control" placeholder="3245XXXX2345" [(ngModel)]='model.accountNumber' required>
+                <div *ngIf = "bankDetailsForm.controls['account']?.['touched'] && bankDetailsForm.controls['account'].invalid" class="errorMessage">Account Number is required</div>
               </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-3 col-form-label" for="confirmAccount">Confirm Account Number <span>*</span></label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" placeholder="3245XXXX2345" id="confirmAccount" name="confirmAccount" ngModel required>
-                  <div *ngIf="bankDetailsForm.controls['confirmAccount']?.['touched']&& bankDetailsForm.controls['account']?.['value'] != bankDetailsForm.controls['confirmAccount']?.['value']">
-                    <small>Account numbers must mach.</small>
+                  <input type="text" class="form-control" placeholder="3245XXXX2345" id="confirmAccount" name="confirmAccount" ngModel  required>
+                  <div *ngIf="bankDetailsForm.controls['confirmAccount']?.['touched'] && bankDetailsForm.controls['confirmAccount'].invalid" class="errorMessage">
+                    Confirm Account Number is required
+                    <div *ngIf="bankDetailsForm.controls['account']?.['value'] != bankDetailsForm.controls['confirmAccount']?.['value']">Account numbers must match.</div>
                 </div>
                 </div>
             </div>
@@ -29,23 +32,25 @@
             <div class="form-group row">
                 <label class="col-sm-3 col-form-label">IFSC Code <span>*</span></label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" placeholder="SBIN3456777" name="ifscCode" ngModel required>
+                  <input type="text" class="form-control" placeholder="SBIN3456777" name="ifscCode" [(ngModel)]='model.ifscCode' required>
+                  <div *ngIf = "bankDetailsForm.controls['ifscCode']?.['touched'] && bankDetailsForm.controls['ifscCode'].invalid " class="errorMessage">IFSC Code is required</div> 
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Branch Name <span>*</span> </label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" placeholder="Alcot Graden" name="branchName" ngModel required>
+                  <input type="text" class="form-control" placeholder="Alcot Graden" name="branchName" [(ngModel)]='model.branchName' required>
+                  <div *ngIf = "bankDetailsForm.controls['branchName']?.['touched'] && bankDetailsForm.controls['branchName'].invalid" class="errorMessage">Branch Name is required</div>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Pan Number <span>*</span></label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control"  placeholder="BPAJ3456RE" name="panNumber" ngModel required>
+                  <input type="text" class="form-control"  placeholder="BPAJ3456RE" name="panNumber" [(ngModel)]='model.panNumber' required>
+                  <div *ngIf = "bankDetailsForm.controls['panNumber']?.['touched'] && bankDetailsForm.controls['panNumber'].invalid " class="errorMessage">Pan Number is required</div>
                 </div>
               </div>
             <div class="form-group mt-5 button-group">
-                <button type="button" class="btn btn-warning px-4">Edit</button>
                 <button type="submit" class="btn btn-primary px-3">Submit</button>
             </div>
             </form>
