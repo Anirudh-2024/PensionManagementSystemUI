@@ -1,6 +1,4 @@
-.signup-section{
-    background-color: rgba(204, 199, 199, 0.617);
-}
+
 .form-control{
     background-color: #BBC6C9;
 }
@@ -13,3 +11,14 @@
     color: white;
 }
 
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+span{
+    color: red;
+}
+.errorMessage{
+    color: red;
+    font-size: 14px;
+}

@@ -1,29 +1,54 @@
 <section class="signup-section">
     <div class="container h-50">
       <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-lg-12 col-xl-9">
-          <div class="card mt-4 mb-4" style="border-radius: 25px;">
+        <div class="col-lg-12 col-xl-10">
+          <div class="card mt-4 mb-4 " style="border-radius: 25px;">
             <div class="card-body ">
               <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                 <p class="text-center h2 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
-                 <form class="mx-1 mx-md-4">
+                 <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-4 mt-4">Sign up</p>
+                 <form class="mx-1 mx-md-4"  #signupform ="ngForm" (ngSubmit)="onSignupFormSubmit()">
                     <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
-                          <label class="form-label">User Name</label>
-                          <input type="text" name="userName" class="form-control" />  
+                          <label class="form-label">User Name <span>*</span></label>
+                          <input type="text" name="userName" class="form-control"
+                           [(ngModel)]="model.userName"
+                           required minlength="3"
+                           maxlength="12"
+                           pattern="[A-Za-z ]*"/>  
+                           <div *ngIf="signupform.controls['userName']?.['touched'] && signupform.controls['userName'].invalid" >
+                            <div *ngIf="signupform.controls['userName'].errors?.required" class="errorMessage">User Name is required.</div>
+                            <div *ngIf="signupform.controls['userName'].errors?.minlength" class="errorMessage">User Name must be at least 3 characters long.</div>
+                            <div *ngIf="signupform.controls['userName'].errors?.maxlength" class="errorMessage">User Name cannot be more than 20 characters long.</div>
+                            <div *ngIf="signupform.controls['userName'].errors?.pattern" class="errorMessage">User Name can only contain letters and spaces.</div>
+                          </div>
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
-                          <label class="form-label">Email Address</label>
-                          <input type="email" name="emailAddress" class="form-control" />
+                          <label class="form-label" >Email Address <span>*</span></label>
+                          <input type="email" name="email" class="form-control"
+                           [(ngModel)]="model.email"
+                           required
+                           pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"/>
+                           <div *ngIf="signupform.controls['email']?.['touched'] && signupform.controls['email'].invalid " >
+                            <div *ngIf="signupform.controls['email'].errors?.required" class="errorMessage">Email Address is required.</div>
+                            <div *ngIf="signupform.controls['email'].errors?.pattern" class="errorMessage">Please enter a valid email address.</div>
+                          </div>
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
-                          <label class="form-label">Password</label>
-                          <input type="password" name="password" class="form-control" />
+                          <label class="form-label">Password <span>*</span></label>
+                          <input type="password" name="password" class="form-control"
+                           [(ngModel)]="model.password"
+                           required
+                           minlength="8"
+                           maxlength="8"/>
+                           <div *ngIf="signupform.controls['password']?.['touched'] && signupform.controls['password'].invalid" >
+                            <div *ngIf="signupform.controls['password'].errors?.required" class="errorMessage">Password is required</div>
+                            <div *ngIf="signupform.controls['password'].errors?.minlength || signupform.controls['password'].errors?.maxlength" class="errorMessage">Password must be at 8 characters long</div>
+                          </div>
                         </div>
                     </div>
                     <div class="d-flex flex-row mb-4">
@@ -32,7 +57,7 @@
                      
                     </div>
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button type="button" class="btn">Register</button>
+                        <button type="submit" class="btn">Register</button>
                     </div>
                  </form>
                 </div>
