@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { BankService } from './service/bank.service';
 import { addbank } from './models/add-bank.model';
 
+
 @Component({
   selector: 'app-bank-details',
   templateUrl: './bank-details.component.html',
@@ -13,7 +14,9 @@ export class BankDetailsComponent implements OnInit {
   pensionerId=localStorage.getItem('pensioner')
 
   model:addbank;
-
+  editable:boolean=true;
+  inputFieldDisable:boolean=true;
+  
   constructor(private bankService:BankService){
     this.model={
       bankName:'',
@@ -21,16 +24,22 @@ export class BankDetailsComponent implements OnInit {
       ifscCode:'',
       branchName:'',
       panNumber:'',
-      pensionerId	:this.pensionerId
+      pensionerId	:this.pensionerId,
     }
   }
 
   ngOnInit(): void {
-    // console.log(this.bankId);
-    // console.log(this.pensionerId)
-    if(this.bankId){
+    
+    this.inputFieldDisable=false;
+    if(this.bankId!==""){
+      this.editable=false;
+      this.inputFieldDisable=true;
       this.fetchBankDetails();
     }
+  }
+  onclickenable(){
+    this.inputFieldDisable=false;
+
   }
   fetchBankDetails(){
     this.bankService.getByBankId(this.bankId).subscribe(response =>{
@@ -42,6 +51,7 @@ export class BankDetailsComponent implements OnInit {
     if(this.bankId===''){
       this.bankService.addBankDetails(this.model).subscribe({
         next:(response)=>{
+          this.inputFieldDisable=true;
           console.log(response);
           alert("Successfully Bank Details are added");
         },
@@ -54,6 +64,7 @@ export class BankDetailsComponent implements OnInit {
       this.bankService.updateBankDetails(this.bankId,this.model).subscribe({
         next:(response)=>{
           console.log(response);
+          this.inputFieldDisable=true;
           alert("Successfully Bank Details are updated ");
         },
         error:(error)=>{

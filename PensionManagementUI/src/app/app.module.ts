@@ -16,6 +16,7 @@ import { GuardianComponent } from './features/pages/guardian/guardian.component'
 import { FooterComponent } from './core/footer/footer.component';
 import { AllDetailsComponent } from './features/pages/all-details/all-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UpperCasePipe} from '@angular/common';
 
 
 
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    UpperCasePipe
   ],
   providers: [],
   bootstrap: [AppComponent]
