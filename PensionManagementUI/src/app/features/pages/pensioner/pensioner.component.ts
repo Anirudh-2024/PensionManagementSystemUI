@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class PensionerComponent implements OnInit {
  
- userId= localStorage.getItem('idee');
+ userId= localStorage.getItem('userId');
   pensionerplan?: PensionerPlan[];
   model: PensionRequest;
   constructor(private pensionerPlanService: PensionerplanService,private router: Router){
@@ -41,6 +41,8 @@ export class PensionerComponent implements OnInit {
     .subscribe({
       next: (response)=>{
         console.log('success');
+        localStorage.setItem('pensionerId','pensionerId')
+        this.router.navigate(['/bankDetails']);
       }
     })
   }

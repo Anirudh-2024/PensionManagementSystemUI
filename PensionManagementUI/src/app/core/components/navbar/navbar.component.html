@@ -11,10 +11,10 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav">
     <li class="nav-item">
-    <a class="nav-link" href="#">Home</a>
+    <a class="nav-link" routerLink="/">Home</a>
     </li>
     <li class="nav-item">
-    <a class="nav-link" href="#">Eligibility</a>
+    <a class="nav-link" href="#eligibility-section">Eligibility</a>
     </li>
     <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -22,16 +22,16 @@
     Add Details
     </a>
     <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Pension Details</a></li>
+    <li  [ngClass]="{'disabled': disableaddDetailsoption()}"><a class="dropdown-item" routerLink="/pensionerDetails" >Pension Details</a></li>
     <div class="dropdown-divider"></div>
-    <li><a class="dropdown-item" href="#">GuardianDetails</a></li>
+    <li [ngClass]="{'disabled': disableoption()}"><a class="dropdown-item" routerLink="/guardianDetails" >GuardianDetails</a></li>
     <div class="dropdown-divider"></div>
-    <li><a class="dropdown-item" href="#">Banking Details</a></li>
+    <li [ngClass]="{'disabled': disableoption()}"><a class="dropdown-item" routerLink="/bankDetails" >Banking Details</a></li>
     </ul>
     </li>
     <li class="nav-item">
     <form class="form-inline my-2 my-lg-0">
-    <button class="btn my-2 my-sm-0" type="submit">Login</button>
+    <button class="btn my-2 my-sm-0" type="button" (click)="hideLoginbutton()">{{userId? 'LogOut' : 'Login'}}</button>
     </form>
     </li>
     </ul>
