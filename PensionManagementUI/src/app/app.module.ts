@@ -16,7 +16,35 @@ import { GuardianComponent } from './features/pages/guardian/guardian.component'
 import { FooterComponent } from './core/footer/footer.component';
 import { AllDetailsComponent } from './features/pages/all-details/all-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UpperCasePipe} from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 
+const routes:Routes=[
+  {
+    path:'', component:HomeComponent
+  },
+  {
+    path:'login', component:LoginComponent
+  },
+  {
+    path:'signup', component:SignUpComponent
+  },
+  {
+    path:'pensionerDetails', component:PensionerComponent
+  },
+  {
+    path:'bankDetails', component:BankDetailsComponent
+  },
+  {
+    path:'guardianDetails', component:GuardianComponent
+  },
+  {
+    path:'applicationForm', component:AllDetailsComponent
+  }
+
+
+  
+]
 
 
 @NgModule({
@@ -38,7 +66,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    UpperCasePipe,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

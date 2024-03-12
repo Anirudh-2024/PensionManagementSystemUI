@@ -3,7 +3,7 @@ import { PensionerplanService } from './services/pensionerplan.service';
 import { PensionerPlan } from './models/pensionerplan.model';
 import { PensionRequest } from './models/pensionrequest.model';
 import { Router } from '@angular/router';
-import { PensionResponse } from './models/pensionresponse.model';
+
 import { formatDate } from '@angular/common';
 
 @Component({
@@ -13,8 +13,11 @@ import { formatDate } from '@angular/common';
 })
 export class PensionerComponent implements OnInit {
  
- userId= localStorage.getItem('idee');
+
  pensionerId=localStorage.getItem('pensioner')
+
+ userId= localStorage.getItem('userId');
+
   pensionerplan?: PensionerPlan[];
    
   model: PensionRequest;
@@ -62,7 +65,10 @@ export class PensionerComponent implements OnInit {
        const parseDate=new Date(rawDate);
        this.model.dateOfBirth=formatDate(parseDate,'yyyy-MM-dd','en-US');
         console.log(this.model);
-        
+
+       
+        localStorage.setItem('pensionerId','pensionerId')
+        this.router.navigate(['/bankDetails']);
       }
     })
   }
