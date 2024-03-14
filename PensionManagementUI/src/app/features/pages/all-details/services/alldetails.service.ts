@@ -4,6 +4,7 @@ import { PensionDetails } from '../models/pensiondetail.model';
 import { Observable } from 'rxjs';
 import { GuardianDetails } from '../models/guardiandetail.model';
 import { BankingDetails } from '../models/bankindetails.model';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,17 +16,17 @@ export class AlldetailsService {
 
   getPensionDetails(pensionid: string): Observable<PensionDetails>{
 
-    return this.http.get<PensionDetails>(`https://localhost:7082/api/Pensioner/GetPensionerDetailsById?pensionerId=${pensionid}`)
+    return this.http.get<PensionDetails>(`${environment.pensionBaseUrl}/api/Pensioner/GetPensionerDetailsById?pensionerId=${pensionid}`)
 
 
   }
   getGuardianDetails(guardianid: string): Observable<GuardianDetails>{
 
-    return this.http.get<GuardianDetails>(`https://localhost:7082/api/Guardian/GetGuardianDetailsById?guardianId=${guardianid}`)
+    return this.http.get<GuardianDetails>(`${environment.guardianBaseUrl}/api/Guardian/GetGuardianDetailsById?guardianId=${guardianid}`)
 
   }
   getBankingDetails(bankid: string): Observable<BankingDetails>{
-    return this.http.get<BankingDetails>(`https://localhost:7166/api/Banking/${bankid}`)
+    return this.http.get<BankingDetails>(`${environment.bankingBaseUrl}/api/Banking/${bankid}`)
   }
 
 }
