@@ -1,11 +1,11 @@
 export interface PensionRequest{
-    FullName: string;
-    DateOfBirth: Date;
-    Gender: string;
-    AadharNumber: string;
-    PhoneNumber: string;
-    Address: string;
-    Age: number;
-    Id: string;
-    PensionPlanId: string
+    fullName: string;
+    dateOfBirth: string;
+    gender: string;
+    aadharNumber: string;
+    phoneNumber: string;
+    address: string;
+    age: number;
+    id: string;
+    pensionPlanId: string
 }

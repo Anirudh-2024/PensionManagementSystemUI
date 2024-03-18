@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { BankService } from './service/bank.service';
 import { addbank } from './models/add-bank.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,13 +12,13 @@ import { addbank } from './models/add-bank.model';
 export class BankDetailsComponent implements OnInit {
   
   bankId=localStorage.getItem('bank')
-  pensionerId=localStorage.getItem('pensioner')
+  pensionerId=localStorage.getItem('pensionerId')
 
   model:addbank;
   editable:boolean=true;
   inputFieldDisable:boolean=true;
   
-  constructor(private bankService:BankService){
+  constructor(private bankService:BankService, private router:Router){
     this.model={
       bankName:'',
       accountNumber:'',
@@ -29,9 +30,9 @@ export class BankDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    localStorage.setItem('bank','bankId')
     this.inputFieldDisable=false;
-    if(this.bankId!==""){
+    if(this.bankId!==null){
       this.editable=false;
       this.inputFieldDisable=true;
       this.fetchBankDetails();
@@ -48,12 +49,13 @@ export class BankDetailsComponent implements OnInit {
     })
   }
    onBankFormSubmit(){
-    if(this.bankId===''){
+    if(this.bankId===null){
       this.bankService.addBankDetails(this.model).subscribe({
         next:(response)=>{
           this.inputFieldDisable=true;
           console.log(response);
           alert("Successfully Bank Details are added");
+          this.router.navigate(['/guardianDetails'])
         },
       error:(error)=>{
         console.log(error.message);
@@ -66,6 +68,7 @@ export class BankDetailsComponent implements OnInit {
           console.log(response);
           this.inputFieldDisable=true;
           alert("Successfully Bank Details are updated ");
+          this.router.navigate(['/applicationForm']);
         },
         error:(error)=>{
           console.log(error);
