@@ -8,27 +8,27 @@
         <tbody>
           <tr>
             <th class="table-active col-xl-2">Full Name </th>
-            <td class=" col-xl-3" >value</td>
+            <td class=" col-xl-3" >{{model.fullName}}</td>
             <th class="table-active col-xl-2">Date Of Birth</th>
-            <td class=" col-xl-3" >value</td>
+            <td class=" col-xl-3" >{{model.dateOfBirth}}</td>
           </tr>
           <tr>
             <th class="table-active">Gender</th>
-            <td  >value</td>
+            <td  >{{model.gender}}</td>
             <th class="table-active">Age</th>
-            <td >value</td>
+            <td >{{model.age}}</td>
           </tr>
           <tr>
             <th class="table-active">Aadhar Number </th>
-            <td >value</td>
+            <td >{{model.aadharNumber}}</td>
             <th class="table-active">Phone Number</th>
-            <td  >value</td>
+            <td  >{{model.phoneNumber}}</td>
           </tr>
           <tr>
             <th class="table-active">Address </th>
-            <td >value</td>
+            <td >{{model.address}}</td>
             <th  class="table-active">Pension Plan</th>
-            <td  >value</td>
+            <td  >{{model.pensionPlanDetails.pensionPlanName}}</td>
           </tr>
         </tbody>
         
@@ -51,12 +51,12 @@
             
             <tbody>
               <tr >
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
+                <td>{{guardian.guardianName}}</td>
+                <td>{{guardian.dateOfBirth}}</td>
+                <td>{{guardian.relation}}</td>
+                <td>{{guardian.age}}</td>
+                <td>{{guardian.gender}}</td>
+                <td>{{guardian.phoneNumber}}</td>
               </tr>
               
               </tbody>
@@ -75,11 +75,11 @@
                 </thead>
                 <tbody>
                   <tr >
-                    <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
+                    <td>{{banking.bankName}}</td>
+                <td>{{banking.accountNumber}}</td>
+                <td>{{banking.ifscCode}}</td>
+                <td>{{banking.branchName}}</td>
+                <td>{{banking.panNumber}}</td>
                   </tr>
                   
                   </tbody>
