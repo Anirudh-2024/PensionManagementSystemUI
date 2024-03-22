@@ -1,5 +1,6 @@
-export interface GuardianRequest{
-   
+export interface GuardianResponse
+{
+    guardianId:string;
     guardianName: string;
     dateOfBirth: string;
     relation: string;

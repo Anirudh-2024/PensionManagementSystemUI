@@ -17,35 +17,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { AllDetailsComponent } from './features/pages/all-details/all-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UpperCasePipe} from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-
-const routes:Routes=[
-  {
-    path:'', component:HomeComponent
-  },
-  {
-    path:'login', component:LoginComponent
-  },
-  {
-    path:'signup', component:SignUpComponent
-  },
-  {
-    path:'pensionerDetails', component:PensionerComponent
-  },
-  {
-    path:'bankDetails', component:BankDetailsComponent
-  },
-  {
-    path:'guardianDetails', component:GuardianComponent
-  },
-  {
-    path:'applicationForm', component:AllDetailsComponent
-  }
-
-
-  
-]
-
+import { ForgotpasswordComponent } from './features/auth/forgotpassword/forgotpassword.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +31,8 @@ const routes:Routes=[
     PensionerComponent,
     GuardianComponent,
     FooterComponent,
-    AllDetailsComponent
+    AllDetailsComponent,
+    ForgotpasswordComponent
    
   ],
   imports: [
@@ -68,7 +41,7 @@ const routes:Routes=[
     FormsModule,
     HttpClientModule,
     UpperCasePipe,
-    RouterModule.forRoot(routes)
+
   ],
   providers: [],
   bootstrap: [AppComponent]

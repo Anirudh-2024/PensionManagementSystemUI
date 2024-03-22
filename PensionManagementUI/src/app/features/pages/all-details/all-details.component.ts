@@ -11,9 +11,9 @@ import { BankingDetails } from './models/bankindetails.model';
 })
 export class AllDetailsComponent {
 
-  pensionId=localStorage.getItem('pension')
-  guardianId=localStorage.getItem('guardian')
-  bankId=localStorage.getItem('bank')
+  pensionId=localStorage.getItem('pensionerId')
+  guardianId=localStorage.getItem('guardianId')
+  bankId=localStorage.getItem('bankId')
 
   model:PensionDetails;
   guardian:GuardianDetails;
@@ -58,9 +58,6 @@ export class AllDetailsComponent {
     }
   }
   ngOnInit(): void{
-    // localStorage.setItem('pension', '2E209298-914E-4FF7-A8F2-3F317B112C0B')
-    // localStorage.setItem('guardian', '5CBB6934-49C9-45B1-B23C-7615199BEEB7')
-    // localStorage.setItem('bank', '')
     this.allDetailsService.getPensionDetails(this.pensionId)
     .subscribe({
       next: (response)=>{

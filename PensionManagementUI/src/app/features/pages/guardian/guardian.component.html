@@ -7,47 +7,58 @@
     <div class="form-group row">
     <label class="col-sm-3 col-form-label">Guardian Name <span>*</span></label>
     <div class="col-sm-5">
-    <input type="text" class="form-control"  name="guardianName" [(ngModel)]="model.GuardianName" required>
+    <input type="text" class="form-control"  name="guardianName" [(ngModel)]="response.guardianName" [disabled]="inputFieldDisable" required>
     </div>
     </div>
     <div class="form-group row">
     <label class="col-sm-3 col-form-label">Date of Birth <span>*</span></label>
     <div class="col-sm-5">
-    <input type="date" class="form-control" name="guardianDob" [(ngModel)]="model.DateOfBirth" required>
+    <input type="date" class="form-control" name="guardianDob" [(ngModel)]="response.dateOfBirth" [disabled]="inputFieldDisable" required>
     </div>
     </div>
     <div class="form-group row">
     <label class="col-sm-3 col-form-label">Relation <span>*</span></label>
     <div class="col-sm-5">
-    <input type="text" class="form-control" placeholder="Father, Mother, etc." name="relation" [(ngModel)]="model.Relation" required>
+    <input type="text" class="form-control" placeholder="Father, Mother, etc." name="relation" [(ngModel)]="response.relation" [disabled]="inputFieldDisable" required>
     </div>
     </div>
     <div class="form-group row">
     <label class="col-sm-3 col-form-label">Age <span>*</span></label>
     <div class="col-sm-5">
-    <input type="number" class="form-control"  name="guardianAge" [(ngModel)]="model.Age" required>
+    <input type="number" class="form-control"  name="guardianAge" [(ngModel)]="response.age" [disabled]="inputFieldDisable" required>
     </div>
     </div>
     <div class="form-group row">
-    <label class="col-sm-3 col-form-label">Gender <span>*</span></label>
-    <div class="col-sm-5">
-    <select class="form-control" name="guardianGender" [(ngModel)]="model.Gender" required>
-    <option value="" disabled selected>Select Gender</option>
-    <option value="male">Male</option>
-    <option value="female">Female</option>
-    <option value="other">Other</option>
-    </select>
-    </div>
+        <div class="row">
+        <div class="col-sm-3">
+        <label class="col-form-label">Gender <span>*</span></label>
+        </div>
+        <div class="col-sm-9">
+        <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="gender" id="maleRadio" value="male" [(ngModel)]="response.gender" [disabled]="inputFieldDisable" required>
+        <label class="form-check-label" for="maleRadio">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="gender" id="femaleRadio" value="female" [(ngModel)]="response.gender" [disabled]="inputFieldDisable" required>
+        <label class="form-check-label" for="femaleRadio">Female</label>
+        </div>
+        <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="gender" id="otherRadio" value="other" [(ngModel)]="response.gender" [disabled]="inputFieldDisable" required>
+        <label class="form-check-label" for="otherRadio">Other</label>
+        </div>
+        </div>
+        </div>
     </div>
     <div class="form-group row">
     <label class="col-sm-3 col-form-label">Phone Number <span>*</span></label>
     <div class="col-sm-5">
-    <input type="tel" class="form-control" placeholder="123-456-7890" name="guardianPhoneNumber" [(ngModel)]="model.PhoneNumber" required>
+    <input type="tel" class="form-control" placeholder="123-456-7890" name="guardianPhoneNumber" [(ngModel)]="response.phoneNumber" [disabled]="inputFieldDisable" required>
     </div>
     </div>
-    <div class="form-group mt-5 button-group">
-    <button type="button" class="btn btn-warning px-4">Edit</button>
-    <button type="submit" class="btn btn-primary px-3">Submit</button>
+    <div class="form-group my-4 button-group">
+    <button type="button" class="btn btn-warning " (click)="onclickenable()"   [disabled]="editable" >Edit</button>
+    <button type="submit" class="btn btn-primary px-3" [disabled]="guardianDetailsForm.invalid" >Submit</button>
+    <button type="button" class="btn btn-primary px-3" (click)="onClickNav()" [hidden]="hidebutton">Next</button>
     </div>
     </form>
     </div>

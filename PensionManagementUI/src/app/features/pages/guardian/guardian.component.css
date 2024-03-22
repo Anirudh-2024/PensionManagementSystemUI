@@ -8,9 +8,11 @@
      background-color: #D9D9D9;
  }
  .button-group{
-     margin-left: 340px; 
+     margin-left: 240px; 
  }
  .btn-warning{
+    padding-left: 30px;
+padding-right: 30px;
      margin-right: 40px;
      background-color: rgba(255, 255, 0, 0.551); 
      border: rgba(255, 255, 0, 0.551);
@@ -20,6 +22,7 @@
      color: white; 
  }
  .btn-primary{
+    margin-right: 40px;
      background-color: rgba(0, 76, 255, 0.551);
      border:  rgba(0, 76, 255, 0.551);
      color: black;

@@ -11,13 +11,13 @@ import { Router } from '@angular/router';
 })
 export class BankDetailsComponent implements OnInit {
   
-  bankId=localStorage.getItem('bank')
+  bankId=localStorage.getItem('bankId');
   pensionerId=localStorage.getItem('pensionerId')
-
+  hidebutton=true;
   model:addbank;
   editable:boolean=true;
   inputFieldDisable:boolean=true;
-  
+  hideViewAllbutton:boolean=true;
   constructor(private bankService:BankService, private router:Router){
     this.model={
       bankName:'',
@@ -30,32 +30,47 @@ export class BankDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    localStorage.setItem('bank','bankId')
-    this.inputFieldDisable=false;
-    if(this.bankId!==null){
+    
+    this.pensionerId = localStorage.getItem('pensionerId');
+    this.bankId=localStorage.getItem('bankId');
+    this.fetchBankId()
+    console.log(this.bankId);
+    console.log(this.pensionerId)
+    
+    if(this.bankId!=='null' || this.bankId!==null){
+      this.hideViewAllbutton=false;
+  }
+  }
+
+  fetchBankId(){
+    if(this.bankId === 'null' || this.bankId===null){
+      console.log(this.bankId);
+      this.inputFieldDisable=false;
+    }
+    else
+    {
       this.editable=false;
       this.inputFieldDisable=true;
       this.fetchBankDetails();
     }
   }
-  onclickenable(){
-    this.inputFieldDisable=false;
+  onClickNav(){
+    
+    this.router.navigate(['/applicationForm']);
 
   }
-  fetchBankDetails(){
-    this.bankService.getByBankId(this.bankId).subscribe(response =>{
-      console.log(response);
-      this.model= response;
-    })
-  }
-   onBankFormSubmit(){
-    if(this.bankId===null){
+  
+  onBankFormSubmit(){
+    if(this.bankId==='null' || this.bankId ===null){
       this.bankService.addBankDetails(this.model).subscribe({
         next:(response)=>{
+          localStorage.setItem('bankId', response.bankId);
           this.inputFieldDisable=true;
           console.log(response);
-          alert("Successfully Bank Details are added");
-          this.router.navigate(['/guardianDetails'])
+          this.editable=true;
+          this.model=response;
+          this.hidebutton=false;
+          
         },
       error:(error)=>{
         console.log(error.message);
@@ -69,6 +84,7 @@ export class BankDetailsComponent implements OnInit {
           this.inputFieldDisable=true;
           alert("Successfully Bank Details are updated ");
           this.router.navigate(['/applicationForm']);
+          
         },
         error:(error)=>{
           console.log(error);
@@ -77,6 +93,17 @@ export class BankDetailsComponent implements OnInit {
     }
     
   }
+  onclickenable(){
+    this.inputFieldDisable=false;
+
+  }
+  fetchBankDetails(){
+    this.bankService.getByBankId(this.bankId).subscribe(response =>{
+      console.log(response);
+      this.model= response;
+    })
+  }
+  
 
 
 }
