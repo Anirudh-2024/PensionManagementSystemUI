@@ -1,4 +1,5 @@
 export interface PensionRequest{
+    pensionerId:string
     fullName: string;
     dateOfBirth: string;
     gender: string;

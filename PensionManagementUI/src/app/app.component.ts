@@ -12,6 +12,6 @@ export class AppComponent {
 
   }
   hidNavBar():boolean{
-    return this.router.url==='/login'|| this.router.url==='/signup';
+    return this.router.url==='/login'|| this.router.url==='/signup' || this.router.url==='/forgotPassword';
   }
 }
