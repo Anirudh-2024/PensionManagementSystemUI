@@ -22,4 +22,7 @@ export class BankService {
   updateBankDetails(bankId:string, data:addbank): Observable<bank>{
     return this.http.put<bank>(`${environment.apiBankBaseUrl}/Banking/${bankId}`,data);
   }
+  getBankIdByPensionerId(pensionerId:string):Observable<string>{
+    return this.http.get<string>(`${environment.apiBankBaseUrl}/Banking/GetBankIdByPensionerId?pensionerId=${pensionerId}`);
+  }
 }

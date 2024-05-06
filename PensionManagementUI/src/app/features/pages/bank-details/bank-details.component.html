@@ -25,10 +25,10 @@
             <div class="form-group row">
                 <label class="col-sm-3 col-form-label" for="confirmAccount">Confirm Account Number <span>*</span></label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" placeholder="Eg: 3245XXXX2345" id="confirmAccount" name="confirmAccount" [ngModel]="model.accountNumber"  required [disabled]="inputFieldDisable">
+                  <input type="text" class="form-control" placeholder="Eg: 3245XXXX2345" id="confirmAccount" name="confirmAccount" ngModel  required [disabled]="inputFieldDisable">
                   <div *ngIf="bankDetailsForm.controls['confirmAccount']?.['touched'] && bankDetailsForm.controls['confirmAccount']?.invalid"  class="errorMessage">
-                    <div *ngIf="bankDetailsForm.controls['confirmAccount'].errors?.required">Confirm Account Number is required</div>
-                </div>
+                  <div *ngIf="bankDetailsForm.controls['confirmAccount'].errors?.required">Confirm Account Number is required</div>
+                  </div>
                 <div *ngIf="bankDetailsForm.controls['confirmAccount']?.['touched'] && bankDetailsForm.controls['account']?.['value'] != bankDetailsForm.controls['confirmAccount']?.['value']" class="errorMessage">Account numbers must match.</div>
                 
                 </div>
@@ -63,9 +63,11 @@
                 
               </div>
               </div>
-            <div class="form-group my-3  button-group">
-              <button type="button" class="btn btn-warning px-3 m-4" (click)="onclickenable()"   [disabled]="editable" >Edit</button>
+            <div class="form-group my-4  button-group">
+              <button type="button" class="btn btn-warning m-4" (click)="onclickenable()"   [disabled]="editable" >Edit</button>
                 <button type="submit" class="btn btn-primary px-3" [disabled]="bankDetailsForm.invalid" >Submit</button>
+                <button type="button" class="btn btn-primary px-3" (click)="onClickNav()" [hidden]="hidebutton">Next</button>
+                <button type="button" class="btn btn-primary px-3" routerLink="/applicationForm" [hidden]="hideViewAllbutton">View All</button>
                 
             </div>
             </form>

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlldetailsService } from '../../../features/pages/all-details/services/alldetails.service';
+import { PensionerplanService } from '../../../features/pages/pensioner/services/pensionerplan.service';
+import { BankService } from '../../../features/pages/bank-details/service/bank.service';
+import { GuardianService } from '../../../features/pages/guardian/services/guardian.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -9,13 +14,31 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit{
   userId=''
   pensionerId='';
+  guardianId='';
+  bankId=''
+  private subscription:Subscription;
+  receivedPensionDetails:string='';
  
   ngOnInit(): void {
-    this.userId = localStorage.getItem('userId');
     
-    console.log(this.userId);
+    this.userId = localStorage.getItem('userId');
+    console.log('userId',this.userId);
+    this.getpensionerId();
+    setTimeout(() => {
+      this.pensionerId = localStorage.getItem('pensionerId');
+      console.log("pensionerId",this.pensionerId);
+      this.getguardianId();
+      this.guardianId = localStorage.getItem('guardianId');
+      this.getBankId();
+      this.bankId= localStorage.getItem('bankId');
+    }, 2000);
   }
-constructor(private router:Router){}
+constructor(private router:Router, private alldetails: AlldetailsService, private pensionerDetails:PensionerplanService, private guardianSerive:GuardianService, private BankDetails:BankService){
+  this.subscription = this.pensionerDetails.pensioDetailsAdded$.subscribe((details)=>{
+    this.receivedPensionDetails=details;
+    console.log("return value",this.receivedPensionDetails);
+  })
+}
 
 hideLoginbutton(){
  localStorage.clear()
@@ -27,10 +50,62 @@ disableaddDetailsoption(){
     return true;
   }
 }
-
+getpensionerId(){
+  this.pensionerDetails.getByUserId(this.userId).subscribe({
+    next:(response) => {
+      if(response!==null){
+        localStorage.setItem('pensionerId',response);
+      }
+      error:(error)=>{
+        console.log('null');
+      }
+    },
+  })}
+getguardianId(){
+  this.guardianSerive.getguardianIdByPensionerId(this.pensionerId)
+  .subscribe({
+    next:(response)=>{
+      if(response!==null){
+        localStorage.setItem('guardianId',response)
+        console.log("guardianId",response)
+      }
+      else{
+        console.log('null');
+      } 
+    },
+    error:(error)=>{
+      console.log('null');
+    }
+  })
+}
+getBankId(){
+  this.BankDetails.getBankIdByPensionerId(this.pensionerId).subscribe({
+    next:(response)=>{
+      if(response!==null){
+        localStorage.setItem('bankId',response);
+        console.log("bankId",response);
+      }
+      else{
+        console.log('null');
+      }
+    },
+    error:(error)=>{
+      console.log('null');
+    }
+  })
+}
 disableoption(){
-  if(this.pensionerId==="" ){
-    return true;
+
+  if( this.pensionerId==='null'|| this.pensionerId===null ){
+    if(this.receivedPensionDetails === ''){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  else{
+    return false;
   }
 }
 }
