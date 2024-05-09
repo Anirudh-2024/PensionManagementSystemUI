@@ -16,23 +16,23 @@ export class GuardianService {
 
   GetPensionerId(userId: string): Observable<any>{
 
-    return this.http.get<any>(`${environment.guardianBaseUrl}/api/Pensioner/GetPensionerIdById?userId=${userId}`);
+    return this.http.get<any>(`${environment.baseurl}/gateway/pensioner/userId/${userId}`);
 
   }
   addGuardian(model: GuardianResponse): Observable<GuardianResponse>{
 
-    return this.http.post<GuardianResponse>(`${environment.guardianBaseUrl}/api/Guardian/AddGuardianDetails`,model);
+    return this.http.post<GuardianResponse>(`${environment.baseurl}/gateway/guardian`,model);
   }
 
   getguardianIdByPensionerId(pensionerId: string):Observable<string>{
-    return this.http.get<string>(`${environment.guardianBaseUrl}/api/Guardian/GetGuardianIdByPensionerId?pensionerId=${pensionerId}`)
+    return this.http.get<string>(`${environment.baseurl}/gateway/guardian/pensionerId/${pensionerId}`)
   }
 
   getguardianByGuardianId(guardianId: string):Observable<GuardianResponse>{
-    return this.http.get<GuardianResponse>(`${environment.guardianBaseUrl}/api/Guardian/GetGuardianDetailsById?guardianId=${guardianId}`)
+    return this.http.get<GuardianResponse>(`${environment.baseurl}/gateway/guardian/${guardianId}`)
   }
 
   updateGuardianDetails(guardianid:string,model:GuardianResponse):Observable<GuardianResponse>{
-    return this.http.put<GuardianResponse>(`${environment.guardianBaseUrl}/api/Guardian/UpdateGuardianById?guardianId=${guardianid}`,model)
+    return this.http.put<GuardianResponse>(`${environment.baseurl}/gateway/guardian/${guardianid}`,model)
   }
 }

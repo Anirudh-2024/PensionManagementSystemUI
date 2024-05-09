@@ -39,6 +39,10 @@ export class GuardianComponent {
     this.guardianId=localStorage.getItem('guardianId')
     console.log(this.guardianId)
     console.log(this.pensionerId)
+    if(this.guardianId === null || this.guardianId === "null"){
+      this.inputFieldDisable=false;
+      console.log(this.inputFieldDisable);
+    }
 
   }
   onclickenable(){
@@ -50,20 +54,24 @@ export class GuardianComponent {
     .subscribe({
       next:(response)=>
       {
-        localStorage.setItem('guardianId',response);
-        if(response=== null){
+        console.log(response);
+        
+        if(response === null || response === "null"){
           this.inputFieldDisable=false;
+          console.log(this.inputFieldDisable);
         }
         else{
           this.editable=false;
           this.inputFieldDisable=true;
           this.fetchguardiandetail();
+          this.hidebutton=false;
         }
       }
     })
   }
   fetchguardiandetail()
   {
+    this.guardianId =localStorage.getItem('guardianId')
     this.guardianService.getguardianByGuardianId(this.guardianId)
     .subscribe({
       next:(response)=>
@@ -90,9 +98,9 @@ export class GuardianComponent {
           localStorage.setItem('guardianId', response.guardianId);
           this.inputFieldDisable=true;
           console.log('success');
-          this.editable=true;
-          this.response=response;
+          this.fetchguardiandetail()
           this.hidebutton=false;
+          this.editable=false;
 
         }
       })

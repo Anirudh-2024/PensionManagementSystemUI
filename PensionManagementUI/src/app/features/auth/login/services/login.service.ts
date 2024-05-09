@@ -13,7 +13,7 @@ export class LoginService {
   constructor(private http:HttpClient) { }
 
   loginuser(data: login):Observable<loginresponse>{
-    return this.http.post<loginresponse>(`${environment.apAuthBaseUrl}/Auth/login`,data);
+    return this.http.post<loginresponse>(`${environment.baseurl}/gateway/auth/login`,data);
   }
 
 }

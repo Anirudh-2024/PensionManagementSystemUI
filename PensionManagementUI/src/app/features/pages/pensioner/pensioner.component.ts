@@ -35,6 +35,7 @@ export class PensionerComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    this.pensionerId = localStorage.getItem('pensionerId');
     this.fetchpensionerId();   
     this.pensionerPlanService.getAllPensionerPlans()
     .subscribe({
@@ -47,23 +48,25 @@ onclickenable(){
     this.inputFieldDisable=false;
   }
 fetchpensionerId(){
-  this.pensionerPlanService.getByUserId(this.userId).subscribe({
-    next:(response)=>{
-      this.pensionerId=response;
+//   this.pensionerPlanService.getByUserId(this.userId).subscribe({
+//     next:(response)=>{
+//       this.pensionerId=response;
       console.log("PensionerId", this.pensionerId);
-      if(this.pensionerId=== null){
+      if(this.pensionerId=== null || this.pensionerId==='null'){
         this.inputFieldDisable=false;
       }
       else{
         this.editable=false;
         this.inputFieldDisable=true;
         this.fetchpensionerdetail();
+        this.hidebutton=false;
       } 
-    }
-  })
+//     }
+//   })
 }
 fetchpensionerdetail()
   {
+    this.pensionerId = localStorage.getItem('pensionerId');
     this.pensionerPlanService.getByPensionId(this.pensionerId)
     .subscribe({
       next: (response)=>{
@@ -90,12 +93,12 @@ fetchpensionerdetail()
           const penId = localStorage.getItem('pensionerId');
           this.pensionerPlanService.emitPensionDetailsAdded(penId);
           this.inputFieldDisable=true;
-          this.editable=true;
-          this.model=response;
+          this.fetchpensionerdetail()
           this.hidebutton=false;
+          this.editable=false;
         },
         error:(error)=>{
-          console.log(error.message);
+          console.error(error);
         }
       })
     }

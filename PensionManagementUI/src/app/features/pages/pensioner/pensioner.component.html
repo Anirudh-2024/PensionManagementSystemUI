@@ -44,10 +44,10 @@
     <div class="form-group row">
     <label class="col-sm-3 col-form-label">Aadhar Number <span>*</span></label>
     <div class="col-sm-5">
-    <input type="text" class="form-control" placeholder="1234-5678-9012" name="aadharNumber" [(ngModel)]="model.aadharNumber" required pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}" [disabled]="inputFieldDisable">
+    <input type="text" class="form-control" placeholder="1234-5678-9012" name="aadharNumber" [(ngModel)]="model.aadharNumber" required pattern="[0-9]{4}[0-9]{4}[0-9]{4}" [disabled]="inputFieldDisable">
     <div *ngIf="personalDetailsForm.controls['aadharNumber']?.invalid && (personalDetailsForm.controls['aadharNumber'].dirty || personalDetailsForm.controls['aadharNumber'].touched)">
     <small class="text-danger" *ngIf="personalDetailsForm.controls['aadharNumber'].errors.required">Aadhar Number is required.</small>
-    <small class="text-danger" *ngIf="personalDetailsForm.controls['aadharNumber'].errors.pattern">Aadhar Number should be in the format XXXX-XXXX-XXXX.</small>
+    <small class="text-danger" *ngIf="personalDetailsForm.controls['aadharNumber'].errors.pattern">Aadhar Number should be in the format XXXXXXXXXXXX.</small>
     </div>
     </div>
     </div>

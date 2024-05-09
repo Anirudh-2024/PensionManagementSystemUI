@@ -12,7 +12,7 @@ export class ForgotpasswordService {
   constructor(private http:HttpClient) { }
 
   forgotpassword(model:forgotPassword):Observable<forgotPassword>{
-    return this.http.post<forgotPassword>(`${environment.apAuthBaseUrl}/Auth`,model)
+    return this.http.post<forgotPassword>(`${environment.baseurl}/gateway/auth`,model)
   }
 
 }
