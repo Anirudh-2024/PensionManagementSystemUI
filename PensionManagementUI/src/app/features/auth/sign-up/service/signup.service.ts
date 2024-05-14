@@ -13,7 +13,7 @@ export class SignupService {
   constructor(private http: HttpClient) { }
 
   registeruser(data:registeruser) : Observable<signup>{
-   var responsedata = this.http.post<signup>(`${environment.apAuthBaseUrl}/Auth/register`, data);
+   var responsedata = this.http.post<signup>(`${environment.baseurl}/gateway/auth/register`, data);
    return responsedata;
    
   }

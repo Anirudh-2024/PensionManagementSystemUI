@@ -16,17 +16,17 @@ export class AlldetailsService {
 
   getPensionDetails(pensionid: string): Observable<PensionDetails>{
 
-    return this.http.get<PensionDetails>(`${environment.pensionBaseUrl}/api/Pensioner/GetPensionerDetailsById?pensionerId=${pensionid}`)
+    return this.http.get<PensionDetails>(`${environment.baseurl}/gateway/pensioner/${pensionid}`)
 
 
   }
   getGuardianDetails(guardianid: string): Observable<GuardianDetails>{
 
-    return this.http.get<GuardianDetails>(`${environment.guardianBaseUrl}/api/Guardian/GetGuardianDetailsById?guardianId=${guardianid}`)
+    return this.http.get<GuardianDetails>(`${environment.baseurl}/gateway/guardian/${guardianid}`)
 
   }
   getBankingDetails(bankid: string): Observable<BankingDetails>{
-    return this.http.get<BankingDetails>(`${environment.bankingBaseUrl}/api/Banking/${bankid}`)
+    return this.http.get<BankingDetails>(`${environment.baseurl}/gateway/banking/${bankid}`)
   }
 
 }

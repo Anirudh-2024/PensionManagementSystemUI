@@ -14,15 +14,15 @@ export class BankService {
   constructor(private http:HttpClient) { }
 
   getByBankId(bankId:string): Observable<bank>{
-    return this.http.get<bank>(`${environment.apiBankBaseUrl}/Banking/${bankId}`);
+    return this.http.get<bank>(`${environment.baseurl}/gateway/banking/${bankId}`);
   }
   addBankDetails(data:addbank): Observable<bank>{
-    return this.http.post<bank>(`${environment.apiBankBaseUrl}/Banking`, data);
+    return this.http.post<bank>(`${environment.baseurl}/gateway/banking`, data);
   }
   updateBankDetails(bankId:string, data:addbank): Observable<bank>{
-    return this.http.put<bank>(`${environment.apiBankBaseUrl}/Banking/${bankId}`,data);
+    return this.http.put<bank>(`${environment.baseurl}/gateway/banking/${bankId}`,data);
   }
   getBankIdByPensionerId(pensionerId:string):Observable<string>{
-    return this.http.get<string>(`${environment.apiBankBaseUrl}/Banking/GetBankIdByPensionerId?pensionerId=${pensionerId}`);
+    return this.http.get<string>(`${environment.baseurl}/gateway/banking/pensionerId/${pensionerId}`);
   }
 }

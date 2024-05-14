@@ -32,13 +32,13 @@ export class NavbarComponent implements OnInit{
       this.getBankId();
       this.bankId= localStorage.getItem('bankId');
     }, 2000);
-  }
+   }
 constructor(private router:Router, private alldetails: AlldetailsService, private pensionerDetails:PensionerplanService, private guardianSerive:GuardianService, private BankDetails:BankService){
   this.subscription = this.pensionerDetails.pensioDetailsAdded$.subscribe((details)=>{
     this.receivedPensionDetails=details;
     console.log("return value",this.receivedPensionDetails);
   })
-}
+} 
 
 hideLoginbutton(){
  localStorage.clear()
@@ -56,8 +56,11 @@ getpensionerId(){
       if(response!==null){
         localStorage.setItem('pensionerId',response);
       }
+      else{
+        console.log(response)
+      }
       error:(error)=>{
-        console.log('null');
+        console.log('');
       }
     },
   })}
@@ -70,11 +73,11 @@ getguardianId(){
         console.log("guardianId",response)
       }
       else{
-        console.log('null');
+        console.log('');
       } 
     },
     error:(error)=>{
-      console.log('null');
+      console.log('');
     }
   })
 }
@@ -86,17 +89,17 @@ getBankId(){
         console.log("bankId",response);
       }
       else{
-        console.log('null');
+        console.log('');
       }
     },
     error:(error)=>{
-      console.log('null');
+      console.log('');
     }
   })
 }
 disableoption(){
 
-  if( this.pensionerId==='null'|| this.pensionerId===null ){
+  if(this.pensionerId===null ){
     if(this.receivedPensionDetails === ''){
       return true;
     }

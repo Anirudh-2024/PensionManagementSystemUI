@@ -13,29 +13,28 @@ export class PensionerplanService {
 
   private pensionDetailsAddedSource = new BehaviorSubject<string>('');
   pensioDetailsAdded$=this.pensionDetailsAddedSource.asObservable();
-
   constructor(private http: HttpClient) { }
-emitPensionDetailsAdded(pensionDetails:string){
+  emitPensionDetailsAdded(pensionDetails:string){
   this.pensionDetailsAddedSource.next(pensionDetails);
 }
 
   getAllPensionerPlans(): Observable<PensionerPlan[]>{
-    return this.http.get<PensionerPlan[]>(`${environment.pensionBaseUrl}/api/PensionPlan/GetAllPensionPlans`);
+    return this.http.get<PensionerPlan[]>(`${environment.baseurl}/gateway/pensionPlan`);
 
   }
   addPensionDetails(model: PensionRequest):  Observable<PensionRequest>{
-    return this.http.post<PensionRequest>(`${environment.pensionBaseUrl}/api/Pensioner/AddPensionerDetails`,model);
+    return this.http.post<PensionRequest>(`${environment.baseurl}/gateway/pensioner`,model);
   }
 
   getByPensionId(pensionid: string): Observable<PensionRequest>{
-    return this.http.get<PensionRequest>(`${environment.pensionBaseUrl}/api/Pensioner/GetPensionerDetailsById?pensionerId=${pensionid}`);
+    return this.http.get<PensionRequest>(`${environment.baseurl}/gateway/pensioner/${pensionid}`);
   }
   updatePensionDetails(pensionid: string,model: PensionRequest): Observable<PensionRequest>{
-    return this.http.put<PensionRequest>(`${environment.pensionBaseUrl}/api/Pensioner/UpdatePensionerDetailsById?pensionerId=${pensionid}`,model);
+    return this.http.put<PensionRequest>(`${environment.baseurl}/gateway/pensioner/${pensionid}`,model);
   }
 
   getByUserId(userId:string):Observable<string>{
-    return this.http.get<string>(`${environment.pensionBaseUrl}/api/Pensioner/GetPensionerIdById?userId=${userId}`);
+    return this.http.get<string>(`${environment.baseurl}/gateway/pensioner/userId/${userId}`);
   }
 
 
